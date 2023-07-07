@@ -1,3 +1,4 @@
+import { Employee, Manager } from "../src/employee";
 import { Seller } from "../src/seller";
 
 describe("Interface", () => {
@@ -49,5 +50,24 @@ describe("Interface", () => {
 
       expect(dictionary["name"]).toBe("Khairul");
       expect(dictionary["address"]).toBe("Indonesia");
+   });
+
+   it("should support extends interface", () => {
+      const employee: Employee = {
+         id: "!",
+         name: "Khairul",
+         division: "IT",
+      };
+
+      console.info(employee);
+
+      const manager: Manager = {
+         id: "2",
+         name: "Akmal",
+         division: "IT",
+         numberOfEmployees: 10,
+      };
+
+      console.info(manager);
    });
 });
