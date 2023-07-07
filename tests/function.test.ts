@@ -53,4 +53,26 @@ describe("Function", () => {
       expect(callMe(10)).toBe(100);
       expect(callMe("Akmal")).toBe("AKMAL");
    });
+
+   it("should function as parameter", () => {
+      function sayHello(name: string, filter: (name: string) => string): string {
+         return `Hello ${filter(name)}`;
+      }
+
+      const toUpper = (name: string): string => {
+         return name.toUpperCase();
+      };
+
+      expect(sayHello("Akmal", toUpper)).toBe("Hello AKMAL");
+
+      // Annonymous function
+      expect(
+         sayHello("Akmal", function (name: string): string {
+            return name.toUpperCase();
+         })
+      ).toBe("Hello AKMAL");
+
+      // Arrow function
+      expect(sayHello("Akmal", (name: string): string => name.toUpperCase())).toBe("Hello AKMAL");
+   });
 });
